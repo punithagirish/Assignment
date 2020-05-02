@@ -1,0 +1,166 @@
+action_factory: null
+action_names:
+- utter_greet
+- utter_welcome
+- utter_restart
+- utter_goodbye
+- utter_deny
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_nontier
+- utter_noresults
+- utter_ask_price
+- utter_ask_send_mail
+- utter_ask_mail
+- utter_email_sent
+- utter_email_error
+- action_city
+- action_get_cuisine
+- action_get_budget
+- action_restaurant
+- action_send_mail
+- action_reset
+- action_restarted
+actions:
+- utter_greet
+- utter_welcome
+- utter_restart
+- utter_goodbye
+- utter_deny
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_nontier
+- utter_noresults
+- utter_ask_price
+- utter_ask_send_mail
+- utter_ask_mail
+- utter_email_sent
+- utter_email_error
+- actions.ActionSearchCity
+- actions.ActionGetCuisineSlection
+- actions.ActionGetBudgetSelection
+- actions.ActionSearchRestaurants
+- actions.ActionSendMail
+- actions.ActionResetSlots
+- actions.ActionRestarted
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+- option
+- budget
+- email
+intents:
+- greet
+- affirm
+- deny
+- goodbye
+- thankyou
+- getoption
+- getbudget
+- send_mail
+- ask_email
+- non_tier
+- restaurant_search
+slots:
+  budget:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  cuisine:
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - chinese
+    - mexican
+    - italian
+    - american
+    - south indian
+    - north indian
+  email:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location_type:
+    initial_value: false
+    type: rasa_core.slots.BooleanSlot
+  noresults:
+    initial_value: true
+    type: rasa_core.slots.BooleanSlot
+  option:
+    initial_value: 0
+    max_value: 1.0
+    min_value: 0.0
+    type: rasa_core.slots.FloatSlot
+  price:
+    initial_value: []
+    type: rasa_core.slots.ListSlot
+templates:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: Please specify location?
+  utter_ask_mail:
+  - text: Can you share your email address then?
+  - text: What is your email address?
+  - text: Please provide me your email address
+  - text: Please enter your email address
+  utter_ask_price:
+  - buttons:
+    - payload: Lesser than Rs. 300
+      title: Lesser than Rs. 300
+    - payload: Rs. 300 to 700
+      title: Rs. 300 to 700
+    - payload: More than 700
+      title: More than 700
+    text: What price range are you looking at?
+  utter_ask_send_mail:
+  - text: Shall I send you the top 10 results via email?
+  - text: Do you want me to send the top 10 results via email?
+  - text: Would you like to have the top 10 results emailed to you?
+  utter_default:
+  - text: I did not understand that. Could you please repeat again?
+  utter_deny:
+  - text: Ok. Bon Appetit!
+  utter_email_error:
+  - text: Sorry, something went wrong, could not send the email.
+  utter_email_sent:
+  - text: The top 10 results have been mailed to you. Anything else I can help you?
+  - text: Emailed you the results, please check your inbox. Anything else I can help
+      you?
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_greet:
+  - text: Hey! How are you?
+  utter_nontier:
+  - text: Sorry, We do not operate in this area yet.
+  - text: Sorry, we don't operate in this city.
+  utter_noresults:
+  - text: That's unfortunate. May I help you with any other search?
+  - text: Sorry for that. Can I help you with something else?
+  utter_restart:
+  - text: Sorry, something went wrong.
+  utter_welcome:
+  - text: Welcome
